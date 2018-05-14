@@ -1,10 +1,31 @@
 {
-    "private": true,
-    "scripts": {
-        "test": "mocha"
-    },
-    "dependencies": {
-        "chai": "^4.1.2",
-        "mocha": "^5.1.1"
-    }
+  "private": true,
+  "scripts": {
+    "test": "mocha --reporter list"
+  },
+  "dependencies": {
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.1.2",
+    "mocha": "^5.1.1"
+  },
+  "name": "javascript-programming-test",
+  "description": "Thanks for applying at Vault!",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the-transgineer/javascript-programming-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/the-transgineer/javascript-programming-test/issues"
+  },
+  "homepage": "https://github.com/the-transgineer/javascript-programming-test#readme"
 }

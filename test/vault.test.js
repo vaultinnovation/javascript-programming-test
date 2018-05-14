@@ -1,12 +1,10 @@
 const expect = require('chai').expect;
-
+const {reverseString, sortAlphaInts, arrDiff, timeDif, diffPoints} = require('../dist/index');
 describe('Vault Tests', () => {
     describe('Reverse Array', () => {
         it('should turn the below string into an array and reverse the words', () => {
             let data = "I want this job.";
-
-            // Code here
-
+            data = reverseString(data);
             expect(['job', 'this', 'want', 'I']).to.deep.equal(data);
         });
     });
@@ -14,7 +12,7 @@ describe('Vault Tests', () => {
         it('should sort the below array', () => {
             let data = ['200', '450', '2.5', '1', '505.5', '2'];
 
-            // Code here
+            data = sortAlphaInts(data);
 
             expect([1, 2, 2.5, 200, 450, 505.5]).to.deep.equal(data);
         });
@@ -23,12 +21,12 @@ describe('Vault Tests', () => {
         it('should determine array differences', () => {
             let data1 = [1, 2, 3, 4, 5, 6, 7];
             let data2 = [2, 4, 5, 7, 8, 9, 10];
+            let data;
 
-            // Code here
-
+            data = arrDiff(data2, data1);
             expect([8, 9, 10]).to.deep.equal(data);
 
-            // Code here
+            data = arrDiff(data1, data2);
 
             expect([1, 3, 6]).to.deep.equal(data);
         });
@@ -45,6 +43,7 @@ describe('Vault Tests', () => {
             };
 
             // Code here
+            const distance = diffPoints(place1, place2);
 
             expect(distance).to.equal('36.91');
         });
@@ -54,7 +53,7 @@ describe('Vault Tests', () => {
             let time1 = '2016-06-05T12:00:00';
             let time2 = '2016-06-05T15:00:00';
 
-            // Code here
+            let timeDiff = timeDif(time1, time2);
 
             expect(timeDiff).to.equal('3 hours ago');
         });
