@@ -1,3 +1,4 @@
+const Utility = require("../Utility");
 const expect = require('chai').expect;
 
 describe('Vault Tests', () => {
@@ -6,8 +7,9 @@ describe('Vault Tests', () => {
             let data = "I want this job.";
 
             // Code here
+            let dataArray = Utility.StringToReverseWordArray(data);
 
-            expect(['job', 'this', 'want', 'I']).to.deep.equal(data);
+            expect(['job', 'this', 'want', 'I']).to.deep.equal(dataArray);
         });
     });
     describe('Order Array', () => {
@@ -15,8 +17,9 @@ describe('Vault Tests', () => {
             let data = ['200', '450', '2.5', '1', '505.5', '2'];
 
             // Code here
+            let dataArray = Utility.NumericOrderArray(data);
 
-            expect([1, 2, 2.5, 200, 450, 505.5]).to.deep.equal(data);
+            expect([1, 2, 2.5, 200, 450, 505.5]).to.deep.equal(dataArray);
         });
     });
     describe('Get Diff Array', () => {
@@ -25,12 +28,12 @@ describe('Vault Tests', () => {
             let data2 = [2, 4, 5, 7, 8, 9, 10];
 
             // Code here
-
-            expect([8, 9, 10]).to.deep.equal(data);
+            let dataArray = Utility.GetDifferenceArray(data1, data2);
+            expect([8, 9, 10]).to.deep.equal(dataArray);
 
             // Code here
-
-            expect([1, 3, 6]).to.deep.equal(data);
+            dataArray = Utility.GetDifferenceArray(data2, data1);
+            expect([1, 3, 6]).to.deep.equal(dataArray);
         });
     });
     describe('Get Distance', () => {
@@ -45,6 +48,7 @@ describe('Vault Tests', () => {
             };
 
             // Code here
+            let distance = Utility.GetGeoDistanceInMilesAsString(place1, place2);
 
             expect(distance).to.equal('36.91');
         });
@@ -55,6 +59,7 @@ describe('Vault Tests', () => {
             let time2 = '2016-06-05T15:00:00';
 
             // Code here
+            let timeDiff = Utility.GetHumanReadableTimeDifference(time1, time2);
 
             expect(timeDiff).to.equal('3 hours ago');
         });
