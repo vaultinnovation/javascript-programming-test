@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const { degrees, radians } = require('radians')
+const moment = require('moment');
 
 describe('Vault Tests', () => {
     describe('Reverse Array', () => {
@@ -58,19 +58,20 @@ describe('Vault Tests', () => {
                 lat: '42.1820210',
                 lon: '-88.3429465',
             };
-            const R = 6371e3
 
-            let lat1 = place1["lat"]
-            let lat2 = place2["lat"]
-            let lat = place2["lat"] - place1["lat"]
-            let lon = place2["lon"] - place1["lon"]
-            console.log(lat, lon);
+            let lat1 = Math.PI * place1["lat"]/180
+          	let lat2 = Math.PI * place2["lat"]/180
+          	let theta = place1["lon"]-place2["lon"]
 
-            var a = Math.sin(lat/2) * Math.sin(lat/2) + Math.cos(lat1) * Math.cos(lat2) * Math.sin(lon/2) * Math.sin(lon/2);
-            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-            let distance = R * c;
-            console.log(distance);
+          	let rad_theta = Math.PI * theta/180
+
+            let distance = Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(rad_theta);
+            distance = Math.acos(distance)
+          	distance = distance * 180/Math.PI
+          	distance = distance * 60 * 1.1507794480
+
             expect(distance).to.equal('36.91');
+
         });
     });
     describe('Get Human Time Diff', () => {
@@ -78,8 +79,10 @@ describe('Vault Tests', () => {
             let time1 = '2016-06-05T12:00:00';
             let time2 = '2016-06-05T15:00:00';
 
-            // Code here
-
+            let tim1 = moment(time1)
+            let tim2 = moment(time2)
+            let timeDiff = tim1.from(tim2)
+            console.log(timeDiff);
             expect(timeDiff).to.equal('3 hours ago');
         });
     });
