@@ -68,8 +68,9 @@ describe('Vault Tests', () => {
             let distance = Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(rad_theta);
             distance = Math.acos(distance)
           	distance = distance * 180/Math.PI
-          	distance = distance * 60 * 1.1507794480
-
+            //console.log(distance);
+          	distance = distance * 60 * 1.151756648
+            distance = distance.toString().substring(0, 5)
             expect(distance).to.equal('36.91');
 
         });
