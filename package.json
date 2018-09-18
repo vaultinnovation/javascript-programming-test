@@ -1,10 +1,12 @@
 {
-    "private": true,
-    "scripts": {
-        "test": "mocha"
-    },
-    "dependencies": {
-        "chai": "^4.1.2",
-        "mocha": "^5.1.1"
-    }
+  "private": true,
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "@turf/turf": "^5.1.6",
+    "chai": "^4.1.2",
+    "lodash": "^4.17.11",
+    "mocha": "^5.1.1"
+  }
 }
