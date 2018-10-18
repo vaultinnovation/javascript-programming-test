@@ -66,8 +66,12 @@ function getGeoLocationDistance(location1, location2){
     return (distance*0.6214).toFixed(2);
 }
 
-function getTimeDifference(timeStamp){
+function getTimeDifference(time1, time2){
+    let beginningTime = new Date(time1);
+    let endTime = new Date(time2);
 
+    let timeDifference = endTime.getHours() -  beginningTime.getHours();
+    return timeDifference.toString() + " hours ago";
 }
 
 module.exports = {
