@@ -16,7 +16,7 @@ describe('Vault Tests', () => {
             let data = ['200', '450', '2.5', '1', '505.5', '2'];
 
             // Code here
-
+            data = Vault.orderArray(data);
             expect([1, 2, 2.5, 200, 450, 505.5]).to.deep.equal(data);
         });
     });

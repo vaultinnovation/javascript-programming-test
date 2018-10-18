@@ -11,7 +11,24 @@ function reverseArray(array){
 }
 
 function orderArray(array){
+    let sortedArray = [];
 
+    if(array.length === 0){
+        return [];
+    }
+    else{
+        let decimal = '.';
+
+        for(let i =0; i < array.length; i++){
+            if(array[i].includes(decimal)){
+                sortedArray.push(parseFloat(array[i]));
+            }
+            else{
+                sortedArray.push(parseInt(array[i]));
+            }
+        }
+    }
+    return sortedArray.sort();
 }
 
 function getDiffArray(array1, array2){
