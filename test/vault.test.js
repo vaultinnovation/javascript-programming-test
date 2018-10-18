@@ -1,4 +1,5 @@
 const expect = require('chai').expect;
+let Vault = require('../Vault/Vault');
 
 describe('Vault Tests', () => {
     describe('Reverse Array', () => {
