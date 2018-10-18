@@ -32,7 +32,18 @@ function orderArray(array){
 }
 
 function getDiffArray(array1, array2){
+    let diffArray = [];
 
+    while(array1.length !== 0){
+        let currentVal = array1[0];
+        array1.splice(0,1);
+
+        if(!array2.includes(currentVal)){
+            diffArray.push(currentVal);
+        }
+    }
+
+    return diffArray;
 }
 
 function getGeoLocationDistance(location1, location2){

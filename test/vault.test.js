@@ -26,11 +26,15 @@ describe('Vault Tests', () => {
             let data2 = [2, 4, 5, 7, 8, 9, 10];
 
             // Code here
-
+            let copyArr1 = data1.slice(0);
+            let copyArr2 = data2.slice(0);
+            let data = Vault.getDiffArray(copyArr2, copyArr1);
             expect([8, 9, 10]).to.deep.equal(data);
 
             // Code here
-
+            copyArr1 = data1.slice(0);
+            copyArr2 = data2.slice(0);
+            data = Vault.getDiffArray(copyArr1, copyArr2);
             expect([1, 3, 6]).to.deep.equal(data);
         });
     });
