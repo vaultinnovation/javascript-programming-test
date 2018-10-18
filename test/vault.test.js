@@ -7,7 +7,7 @@ describe('Vault Tests', () => {
             let data = "I want this job.";
 
             // Code here
-
+            data = Vault.reverseArray(data);
             expect(['job', 'this', 'want', 'I']).to.deep.equal(data);
         });
     });
