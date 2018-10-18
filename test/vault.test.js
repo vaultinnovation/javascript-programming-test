@@ -50,7 +50,7 @@ describe('Vault Tests', () => {
             };
 
             // Code here
-
+            let distance = Vault.getGeoLocationDistance(place1, place2);
             expect(distance).to.equal('36.91');
         });
     });

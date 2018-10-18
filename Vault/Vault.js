@@ -46,8 +46,24 @@ function getDiffArray(array1, array2){
     return diffArray;
 }
 
-function getGeoLocationDistance(location1, location2){
+function radians(degrees){
+    return degrees * Math.PI / 180;
+}
 
+function getGeoLocationDistance(location1, location2){
+    let earthrRad = 6371;
+    let del1 = radians(parseFloat(location1.lat));
+    let del2 = radians(parseFloat(location2.lat));
+
+    let sumdel = radians(parseFloat(location2.lat - location1.lat));
+    let sumlam = radians(parseFloat(location2.lon - location1.lon));
+
+    let haversine = Math.sin(sumdel/2)*Math.sin(sumdel/2) + Math.cos(del1)*Math.cos(del2) * Math.sin(sumlam/2)*Math.sin(sumlam/2);
+    let c = 2*Math.atan2(Math.sqrt(haversine), Math.sqrt(1-haversine));
+
+    let distance = earthrRad*c;
+
+    return (distance*0.6214).toFixed(2);
 }
 
 function getTimeDifference(timeStamp){
