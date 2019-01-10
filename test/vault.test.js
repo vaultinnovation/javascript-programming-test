@@ -1,11 +1,19 @@
 const expect = require('chai').expect;
 
 describe('Vault Tests', () => {
+    // do not need function
     describe('Reverse Array', () => {
         it('should turn the below string into an array and reverse the words', () => {
             let data = "I want this job.";
 
-            // Code here
+            // remove period
+            data = data.replace(".", "");
+            
+            // split string into array
+            data = data.split(' ')
+            
+            // reverse array
+            data = data.reverse();
 
             expect(['job', 'this', 'want', 'I']).to.deep.equal(data);
         });
