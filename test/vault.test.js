@@ -18,11 +18,17 @@ describe('Vault Tests', () => {
             expect(['job', 'this', 'want', 'I']).to.deep.equal(data);
         });
     });
+    
+    // do not need function
     describe('Order Array', () => {
         it('should sort the below array', () => {
             let data = ['200', '450', '2.5', '1', '505.5', '2'];
 
-            // Code here
+            // Simple sort
+            data.sort( (a, b) => a - b);
+
+            // cast to number
+            data = data.map(Number);
 
             expect([1, 2, 2.5, 200, 450, 505.5]).to.deep.equal(data);
         });
