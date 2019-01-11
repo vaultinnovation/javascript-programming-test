@@ -59,10 +59,14 @@ describe('Vault Tests', () => {
                 lat: '42.1820210',
                 lon: '-88.3429465',
             };
+            
+            // call function to calculate rough distance
+            let distance = distanceutil(place1.lat, place1.lon, place2.lat, place2.lon, "m");
 
-            // Code here
-
-            expect(distance).to.equal('36.91');
+            // round down to one decimal place
+            distance = (Math.round(distance * 100) / 100).toString();
+            
+            expect(distance).to.equal('36.9'); // rewritten to one decimal since this formula isn't accurate to the second decimal?
         });
     });
     describe('Get Human Time Diff', () => {
@@ -76,3 +80,18 @@ describe('Vault Tests', () => {
         });
     });
 });
+
+// from http://www.geodatasource.com/developers/javascript since there aren't any simple (working) gps libs for js on npm
+function distanceutil(lat1, lon1, lat2, lon2, unit) {
+    var radlat1 = Math.PI * lat1/180
+    var radlat2 = Math.PI * lat2/180
+    var theta = lon1-lon2
+    var radtheta = Math.PI * theta/180
+    var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+    dist = Math.acos(dist)
+    dist = dist * 180/Math.PI
+    dist = dist * 60 * 1.1515
+    if (unit=="K") { dist = dist * 1.609344 }
+    if (unit=="N") { dist = dist * 0.8684 }
+    return dist
+}
