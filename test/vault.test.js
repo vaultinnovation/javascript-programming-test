@@ -18,13 +18,13 @@ describe('Vault Tests', () => {
             expect(['job', 'this', 'want', 'I']).to.deep.equal(data);
         });
     });
-    
+
     // do not need function
     describe('Order Array', () => {
         it('should sort the below array', () => {
             let data = ['200', '450', '2.5', '1', '505.5', '2'];
 
-            // Simple sort
+            // simple sort
             data.sort( (a, b) => a - b);
 
             // cast to number
@@ -38,11 +38,13 @@ describe('Vault Tests', () => {
             let data1 = [1, 2, 3, 4, 5, 6, 7];
             let data2 = [2, 4, 5, 7, 8, 9, 10];
 
-            // Code here
+            // gets numbers in data2 that are not in data1
+            let data = data2.filter( n => !data1.includes(n));
 
             expect([8, 9, 10]).to.deep.equal(data);
 
-            // Code here
+            // gets numbers in data1 that are not in data2
+            data = data1.filter( n => !data2.includes(n));
 
             expect([1, 3, 6]).to.deep.equal(data);
         });
