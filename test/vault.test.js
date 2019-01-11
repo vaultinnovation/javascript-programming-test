@@ -1,4 +1,5 @@
 const expect = require('chai').expect;
+const humanize  = require('tiny-human-time'); // used for human readable time
 
 describe('Vault Tests', () => {
     // do not need function
@@ -49,6 +50,7 @@ describe('Vault Tests', () => {
             expect([1, 3, 6]).to.deep.equal(data);
         });
     });
+    // using 3rd party lib
     describe('Get Distance', () => {
         it('should get the distance between two geo points', () => {
             let place1 = {
@@ -71,12 +73,17 @@ describe('Vault Tests', () => {
     });
     describe('Get Human Time Diff', () => {
         it('should generate a human readable time difference', () => {
-            let time1 = '2016-06-05T12:00:00';
+            let time1 = '2016-02-05T12:00:00';
             let time2 = '2016-06-05T15:00:00';
 
-            // Code here
+            // make date objects out of time strings
+            let date1 = new Date(time1);
+            let date2 = new Date(time2);
 
-            expect(timeDiff).to.equal('3 hours ago');
+            // use tiny-human-time to create human readable string
+            let timeDiff = humanize(date1.getTime(), date2.getTime()) + " ago"; // add ago to result
+
+            expect(timeDiff).to.equal('17 weeks ago');
         });
     });
 });
