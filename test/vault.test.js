@@ -3,9 +3,13 @@ const expect = require('chai').expect;
 describe('Vault Tests', () => {
     describe('Reverse Array', () => {
         it('should turn the below string into an array and reverse the words', () => {
-            let data = "I want this job.";
+            let data = 'I want this job.';
 
-            // Code here
+            // First remove the extra period, then split and reverse
+            data = data
+                .replace(/\./g, '')
+                .split(' ')
+                .reverse();
 
             expect(['job', 'this', 'want', 'I']).to.deep.equal(data);
         });
