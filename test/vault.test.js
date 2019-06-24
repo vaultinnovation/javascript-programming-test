@@ -18,7 +18,8 @@ describe('Vault Tests', () => {
         it('should sort the below array', () => {
             let data = ['200', '450', '2.5', '1', '505.5', '2'];
 
-            // Code here
+            // First massage the data into an array of int(s), then sort
+            data = data.map(num => Number(num)).sort();
 
             expect([1, 2, 2.5, 200, 450, 505.5]).to.deep.equal(data);
         });
@@ -41,11 +42,11 @@ describe('Vault Tests', () => {
         it('should get the distance between two geo points', () => {
             let place1 = {
                 lat: '41.9641684',
-                lon: '-87.6859726',
+                lon: '-87.6859726'
             };
             let place2 = {
                 lat: '42.1820210',
-                lon: '-88.3429465',
+                lon: '-88.3429465'
             };
 
             // Code here
