@@ -29,11 +29,17 @@ describe('Vault Tests', () => {
             let data1 = [1, 2, 3, 4, 5, 6, 7];
             let data2 = [2, 4, 5, 7, 8, 9, 10];
 
-            // Code here
+            const arrayDiff = (compArray, target) => {
+                // Filter each value of the target array, seeing if that's anywhere in the comparison
+                return target.filter(val => compArray.indexOf(val) < 0);
+            };
+
+            let data = arrayDiff(data1, data2);
 
             expect([8, 9, 10]).to.deep.equal(data);
 
-            // Code here
+            // Reverse comparision direction
+            data = arrayDiff(data2, data1);
 
             expect([1, 3, 6]).to.deep.equal(data);
         });
