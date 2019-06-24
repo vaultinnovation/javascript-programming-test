@@ -55,7 +55,29 @@ describe('Vault Tests', () => {
                 lon: '-88.3429465'
             };
 
-            // Code here
+            // Can't take credit for this so here's where I found it:
+            // https://snipplr.com/view/25479/calculate-distance-between-two-points-with-latitude-and-longitude-coordinates/
+            const getDistance = (lat1, lon1, lat2, lon2) => {
+                const R = 3959; // km (change this constant to get miles)
+                const dLat = ((lat2 - lat1) * Math.PI) / 180;
+                const dLon = ((lon2 - lon1) * Math.PI) / 180;
+                const a =
+                    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                    Math.cos((lat1 * Math.PI) / 180) *
+                        Math.cos((lat2 * Math.PI) / 180) *
+                        Math.sin(dLon / 2) *
+                        Math.sin(dLon / 2);
+                const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                const d = R * c;
+                return d;
+            };
+
+            const distance = getDistance(
+                place1.lat,
+                place1.lon,
+                place2.lat,
+                place2.lon
+            ).toPrecision(4);
 
             expect(distance).to.equal('36.91');
         });
