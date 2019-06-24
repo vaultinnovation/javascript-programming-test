@@ -65,7 +65,14 @@ describe('Vault Tests', () => {
             let time1 = '2016-06-05T12:00:00';
             let time2 = '2016-06-05T15:00:00';
 
-            // Code here
+            time1 = new Date(time1);
+            time2 = new Date(time2);
+
+            // Convert time strings to date objects, then divide to get hours
+            const timeDiff = `${(time2.getTime() - time1.getTime()) /
+                1000 /
+                60 /
+                60} hours ago`;
 
             expect(timeDiff).to.equal('3 hours ago');
         });
