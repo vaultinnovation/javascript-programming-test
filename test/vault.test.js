@@ -6,10 +6,13 @@ describe('Vault Tests', () => {
             let data = 'I want this job.';
 
             // First remove the extra period, then split and reverse
-            data = data
-                .replace(/\./g, '')
-                .split(' ')
-                .reverse();
+            const splitAndReverse = arg =>
+                arg
+                    .replace(/\./g, '')
+                    .split(' ')
+                    .reverse();
+
+            data = splitAndReverse(data);
 
             expect(['job', 'this', 'want', 'I']).to.deep.equal(data);
         });
@@ -19,7 +22,9 @@ describe('Vault Tests', () => {
             let data = ['200', '450', '2.5', '1', '505.5', '2'];
 
             // First massage the data into an array of int(s), then sort
-            data = data.map(num => Number(num)).sort();
+            const sortData = data => data.map(num => Number(num)).sort();
+
+            data = sortData(data);
 
             expect([1, 2, 2.5, 200, 450, 505.5]).to.deep.equal(data);
         });
@@ -57,8 +62,11 @@ describe('Vault Tests', () => {
 
             // Can't take credit for this so here's where I found it:
             // https://snipplr.com/view/25479/calculate-distance-between-two-points-with-latitude-and-longitude-coordinates/
+            // I was planning on using a package called 'geolib',
+            // but no package I could find was using the exact formula you used so I had to switch
+
             const getDistance = (lat1, lon1, lat2, lon2) => {
-                const R = 3959; // km (change this constant to get miles)
+                const R = 3959; // Radius of the earth in miles
                 const dLat = ((lat2 - lat1) * Math.PI) / 180;
                 const dLon = ((lon2 - lon1) * Math.PI) / 180;
                 const a =
@@ -77,7 +85,7 @@ describe('Vault Tests', () => {
                 place1.lon,
                 place2.lat,
                 place2.lon
-            ).toPrecision(4);
+            ).toPrecision(4); // This part was me though
 
             expect(distance).to.equal('36.91');
         });
@@ -87,14 +95,16 @@ describe('Vault Tests', () => {
             let time1 = '2016-06-05T12:00:00';
             let time2 = '2016-06-05T15:00:00';
 
-            time1 = new Date(time1);
-            time2 = new Date(time2);
+            const getTimeDiff = (t1, t2) => {
+                t1 = new Date(t1);
+                t2 = new Date(t2);
+
+                return (t2.getTime() - t1.getTime()) / 1000 / 60 / 60;
+            };
+
+            const timeDiff = `${getTimeDiff(time1, time2)} hours ago`;
 
             // Convert time strings to date objects, then divide to get hours
-            const timeDiff = `${(time2.getTime() - time1.getTime()) /
-                1000 /
-                60 /
-                60} hours ago`;
 
             expect(timeDiff).to.equal('3 hours ago');
         });
