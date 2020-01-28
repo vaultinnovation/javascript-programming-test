@@ -49,8 +49,9 @@ describe("Vault Tests", () => {
       };
 
       // Code here
+      let result = obj.getDist(place1, place2);
 
-      expect(distance).to.equal("36.91");
+      expect(result).to.equal("36.91");
     });
   });
   describe("Get Human Time Diff", () => {
