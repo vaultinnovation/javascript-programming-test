@@ -1,5 +1,5 @@
 const expect = require("chai").expect;
-const obj = require("../obj");
+const utility = require("../utility");
 
 describe("Vault Tests", () => {
   describe("Reverse Array", () => {
@@ -7,7 +7,7 @@ describe("Vault Tests", () => {
       let data = "I want this job.";
 
       // Code here
-      let result = obj.reverse(data);
+      let result = utility.reverse(data);
       expect(["job", "this", "want", "I"]).to.deep.equal(result);
     });
   });
@@ -16,7 +16,7 @@ describe("Vault Tests", () => {
       let data = ["200", "450", "2.5", "1", "505.5", "2"];
 
       // Code here
-      let result = obj.orderArr(data);
+      let result = utility.orderArr(data);
 
       expect([1, 2, 2.5, 200, 450, 505.5]).to.deep.equal(result);
     });
@@ -27,12 +27,12 @@ describe("Vault Tests", () => {
       let data2 = [2, 4, 5, 7, 8, 9, 10];
 
       // Code here
-      let result1 = obj.diffArr(data1, data2);
+      let result1 = utility.diffArr(data1, data2);
 
       expect([8, 9, 10]).to.deep.equal(result1);
 
       // Code here
-      let result2 = obj.diffArr(data2, data1);
+      let result2 = utility.diffArr(data2, data1);
 
       expect([1, 3, 6]).to.deep.equal(result2);
     });
@@ -49,7 +49,7 @@ describe("Vault Tests", () => {
       };
 
       // Code here
-      let result = obj.getDist(place1, place2);
+      let result = utility.getDist(place1, place2);
 
       expect(result).to.equal("36.91");
     });
@@ -60,7 +60,7 @@ describe("Vault Tests", () => {
       let time2 = "2016-06-05T15:00:00";
 
       // Code here
-      let results = obj.timeDiffHum(time1, time2);
+      let results = utility.timeDiffHum(time1, time2);
 
       expect(results).to.equal("3 hours ago");
     });
