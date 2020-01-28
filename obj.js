@@ -3,5 +3,6 @@ module.exports = {
     str
       .substr(0, str.length - 1)
       .split(" ")
-      .reverse()
+      .reverse(),
+  orderArr: arr => arr.map(str => parseFloat(str)).sort((a, b) => a - b)
 };
