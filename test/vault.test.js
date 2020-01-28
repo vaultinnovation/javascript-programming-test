@@ -27,12 +27,14 @@ describe("Vault Tests", () => {
       let data2 = [2, 4, 5, 7, 8, 9, 10];
 
       // Code here
+      let result1 = obj.diffArr(data1, data2);
 
-      expect([8, 9, 10]).to.deep.equal(data);
+      expect([8, 9, 10]).to.deep.equal(result1);
 
       // Code here
+      let result2 = obj.diffArr(data2, data1);
 
-      expect([1, 3, 6]).to.deep.equal(data);
+      expect([1, 3, 6]).to.deep.equal(result2);
     });
   });
   describe("Get Distance", () => {
