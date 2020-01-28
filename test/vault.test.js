@@ -59,8 +59,9 @@ describe("Vault Tests", () => {
       let time2 = "2016-06-05T15:00:00";
 
       // Code here
+      let results = obj.timeDiffHum(time1, time2);
 
-      expect(timeDiff).to.equal("3 hours ago");
+      expect(results).to.equal("3 hours ago");
     });
   });
 });
